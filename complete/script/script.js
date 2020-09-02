@@ -1,30 +1,28 @@
 $(function() {
-  /** Tabの切替トリガー */
+  // Tabの切替トリガー
   var $tabTrigger = $('.js-tab-trigger');
 
-  /** Tabのコンテンツ */
+  // Tabのコンテンツ
   var $tabContent = $('.js-tab-content');
-  console.log('$tabContent', $tabContent);
 
+  // トリガーのクリック
   $tabTrigger.on('click', function(event) {
-    console.log('click!');
     // Clickイベントを止める
     event.preventDefault();
 
+    // クリックしたタブ要素とdata属性を取得
     var $target = $(event.currentTarget);
     var $list = $target.data('tab-list');
     var $info = $target.data('tab-info');
 
-    console.log('$target', $target);
-    console.log('$list', $list);
-    console.log('$info', $info);
-
+    // 選択中のトリガーを更新する
     $tabTrigger
       .filter('[data-tab-list="' + $list + '"]')
       .removeClass('is-current')
       .filter('[data-tab-info="' + $info + '"]')
       .addClass('is-current');
 
+    // 選択中のコンテンツを更新する
     $tabContent
       .filter('[data-tab-list="' + $list + '"]')
       .removeClass('is-current')
